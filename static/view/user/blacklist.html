@@ -1,0 +1,40 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta http-equiv="Content-Language" content="zh-cn">
+    <title>支付管理平台</title>
+    <link rel="stylesheet" href="/static/layui/css/layui.css" media="all">
+</head>
+<body>
+<fieldset class="layui-elem-field layui-field-title" style="margin-top: 18px;">
+    <legend>用户黑名单列表</legend>
+</fieldset>
+<div class="layui-fluid">
+    <div class="demoTable">
+        搜索用户：
+        <div class="layui-inline">
+            <input class="layui-input" name="id" id="searchname" autocomplete="off" placeholder="用户名">
+        </div>
+        <button class="layui-btn" data-type="reload" id="selectbtn">搜索</button>
+        <button class="layui-btn layui-btn-normal" data-type="add" id="addbtn">新增</button>
+        <button class="layui-btn layui-btn-danger" data-type="batchdel" id="batchdel">批量删除</button>
+    </div>
+
+    <div class="role-table-reload-btn">
+        <!--数据表格-->
+        <table class="layui-hide" id="userData" lay-data="{id:'userData'}" lay-filter="userFilter"></table>
+        <!--数据行操作按钮-->
+        <script type="text/html" id="userOpert">
+            <a class="layui-btn layui-btn-danger layui-btn-xs del" lay-event="deleteUser">删除</a>
+        </script>
+    </div>
+</div>
+</body>
+
+<script src="/static/layui/layui.js" charset="utf-8"></script>
+<script src="/static/js/common/jquery.js"></script>
+<script src="/static/js/common/common.js"></script>
+<script src="/static/js/user/blacklist.js?v=7"></script>
+<script src="/static/js/common/cookie.js"></script>
+</html>

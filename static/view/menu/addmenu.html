@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>表单组合</title>
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=0">
+    <link rel="stylesheet" href="/static/layui/css/layui.css" media="all">
+</head>
+
+<body>
+
+<div class="layui-fluid">
+    <div class="layui-card">
+        <div class="layui-card-body" style="padding: 15px;">
+            <form class="layui-form" action="">
+                <div class="layui-form-item">
+                    <div class="layui-inline">
+                        <label class="layui-form-label">菜单名称</label>
+                        <div class="layui-input-block">
+                            <input type="text" name="description" id="name" lay-verify="required" autocomplete="off"
+                                   class="layui-input">
+                        </div>
+                    </div>
+                </div>
+                <div class="layui-form-item">
+                    <div class="layui-inline">
+                        <label class="layui-form-label">菜单地址</label>
+                        <div class="layui-input-inline">
+                            <input type="text" name="url" id="url" autocomplete="off" class="layui-input">
+                        </div>
+                    </div>
+                </div>
+                <div class="layui-form-item">
+                    <div class="layui-inline">
+                        <label class="layui-form-label">菜单图标</label>
+                        <div class="layui-input-inline">
+                            <input type="text" name="icon" id="icon" autocomplete="off" class="layui-input">
+                        </div>
+                    </div>
+                </div>
+                <div class="layui-form-item">
+                    <div class="layui-inline">
+                        <label class="layui-form-label">上级菜单</label>
+                        <div class="layui-input-inline">
+                            <select name="parentId" id="parentId" lay-verify="required"
+                                    style="height: 39px;width: 124px;" lay-search="">
+                                <option value="0">父级菜单</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+                <div class="layui-form-item">
+                    <div class="layui-inline">
+                        <label class="layui-form-label">菜单顺序</label>
+                        <div class="layui-input-inline">
+                            <input type="text" name="modelOrder" id="orderNum" lay-verify="required" autocomplete="off"
+                                   class="layui-input">
+                        </div>
+                    </div>
+                </div>
+                <div class="layui-form-item">
+                    <div class="layui-input-block">
+                        <div class="layui-footer" style="left: 0;">
+                            <button class="layui-btn" lay-submit="" lay-filter="addMenuSubmit">立即提交</button>
+                            <button data-type="cancel" class="layui-btn layui-btn-primary">取消</button>
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+<script src="/static/layui/layui.js" type="text/javascript" charset="utf-8"></script>
+<script src="/static/layui/lay/modules/jquery.js" type="text/javascript" charset="utf-8"></script>
+<script src="/static/js/menu/addmenu.js?v=2"></script>
+<script src="/static/js/common/cookie.js"></script>
+<script src="/static/js/common/common.js"></script>
+</body>
+</html>

@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org">
+<head>
+	<title>跳转页面</title>
+</head>
+<body>
+</body>
+<script th:src="@{/js/common/jquery.js}"></script>
+<script th:src="@{/js/common/cookie.js}"></script>
+<script>
+    cookie.set("token","[[${_csrf.token}]]");
+    window.location.href="/config/view/index.html";
+</script>
+</html>

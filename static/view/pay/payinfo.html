@@ -1,0 +1,72 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+    <meta name="renderer" content="webkit">
+    <title>支付管理平台</title>
+    <link rel="stylesheet" href="/static/layui/css/layui.css" media="all">
+</head>
+<body>
+<fieldset class="layui-elem-field layui-field-title" style="margin-top: 18px;">
+    <legend>支付方式</legend>
+</fieldset>
+<div class="layui-fluid">
+    <div class="demoTable">
+        <form class="layui-form" autocomplete="off">
+            <button class="layui-btn layui-btn-normal" data-type="add" type="button" id="addPayInfo">新增</button>
+            <div class="layui-inline">
+                <label class="layui-form-label">编码/名称</label>
+                <div class="layui-input-block">
+                    <input type="text" name="searchKey" id="searchKey" class="layui-input">
+                </div>
+            </div>
+            <div class="layui-inline">
+                <label class="layui-form-label">支付类型</label>
+                <div class="layui-input-block">
+                    <select name="payType" id="payType" lay-filter="payType">
+                        <option value=""></option>
+                    </select>
+                </div>
+            </div>
+            <div class="layui-inline">
+                <button class="layui-btn" type="button" data-type="reload" id="selectbtn">搜索</button>
+            </div>
+        </form>
+    </div>
+    <div class="role-table-reload-btn" style="margin-bottom: 10px;">
+        <!--数据表格-->
+        <table class="layui-hide" id="payinfo" lay-data="{id:'payinfo'}" lay-filter="userFilter"></table>
+        <!--数据行操作按钮-->
+        <script type="text/html" id="toolbar">
+            <a class="layui-btn layui-btn-xs edit" lay-event="edit">编辑</a>
+            <a class="layui-btn layui-btn-danger layui-btn-xs del" lay-event="delete">删除</a>
+        </script>
+        <script type="text/html" id="switchState">
+            <input type="checkbox" name="state" value="{{d.state}}" disabled="disabled" lay-skin="switch"
+                   lay-text="ON|OFF" {{ d.state== 1? 'checked' : '' }}>
+        </script>
+
+        <script type="text/html" id="switchMinSwitch">
+            <input type="checkbox" name="state" value="{{d.minSwitch}}" disabled="disabled" lay-skin="switch"
+                   lay-text="ON|OFF" {{ d.minSwitch== 'on'? 'checked' : '' }}>
+        </script>
+
+        <script type="text/html" id="switchMaxSwitch">
+            <input type="checkbox" name="state" value="{{d.maxSwitch}}" disabled="disabled" lay-skin="switch"
+                   lay-text="ON|OFF" {{ d.maxSwitch== 'on'? 'checked' : '' }}>
+        </script>
+
+        <script type="text/html" id="switchPointSwitch">
+            <input type="checkbox" name="state" value="{{d.pointSwitch}}" disabled="disabled" lay-skin="switch"
+                   lay-text="ON|OFF" {{ d.pointSwitch== 'on'? 'checked' : '' }}>
+        </script>
+    </div>
+</div>
+</body>
+<script type="text/html" id="indexTpl">
+    {{d.LAY_TABLE_INDEX+1}}
+</script>
+<script src="/static/layui/layui.js" type="text/javascript" charset="utf-8"></script>
+<script src="/static/layui/lay/modules/jquery.js" type="text/javascript" charset="utf-8"></script>
+<script src="/static/js/common/common.js" type="text/javascript" charset="utf-8"></script>
+<script src="/static/js/pay/payinfo.js" type="text/javascript" charset="utf-8"></script>
+</html>

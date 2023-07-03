@@ -1,0 +1,117 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+    <META HTTP-EQUIV="Cache-Control" CONTENT="no-cache">
+    <meta charset="utf-8">
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1, maximum-scale=1">
+    <title>后台管理系统</title>
+    <link rel="shortcut icon" href="/static/favicon.ico" type="image/x-icon"/>
+    <link rel="stylesheet" href="/static/layui/css/layui.css">
+    <link href="/static/css/font-awesome/css/font-awesome.css" rel="stylesheet">
+    <style type="text/css">
+        .layui-layout-admin .layui-logo {
+            font-size: 25px !important;
+            color: #ffffff;
+        }
+        .kit-side-fold {
+            color: #fff;
+            top: 30px;
+            position: relative;
+            left: 242px;
+            width: 20px;
+        }
+    </style>
+</head>
+<body class="layui-layout-body">
+<div class="layui-layout layui-layout-admin">
+    <div class="layui-header" style="background-color: #009688 !important;">
+        <div class="layui-logo">快充管理系统</div>
+        <div title="菜单缩放" class="kit-side-fold"><i class="fa fa-navicon" aria-hidden="true"></i></div>
+        <ul class="layui-nav layui-layout-right">
+            <li class="layui-nav-item"><a href="javascript:;"><p id="nameh3"></p></a>
+                <dl class="layui-nav-child layui-anim layui-anim-upbit">
+                    <dd class="layui-this">
+                        <a href="/static/view/customer/updatePass.html" target="myFrame">
+                            <i class="iconfont icon-shezhi1" data-icon="icon-shezhi1"></i>
+                            <cite>修改密码</cite>
+                        </a>
+                    </dd>
+                </dl>
+            </li>
+            <li class="layui-nav-item"><a id="logout" href="/config/logoutPage">退出</a></li>
+        </ul>
+    </div>
+
+    <!-- 侧边菜单 -->
+    <div class="layui-side layui-bg-black">
+
+        <div class="layui-side-scroll">
+
+            <ul class="layui-nav layui-nav-tree layui-inline" style="margin-right: 10px;" id="menutree">
+                <li class="layui-nav-item layui-nav-itemed">
+                    <dl class="layui-nav-child">
+                        <dd class="layui-this"><a id="count" href="order/order_count.html" target="myFrame"><i
+                                class="fa fa fa-bars"></i><span>我的看板</span></a></dd>
+                    </dl>
+                </li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="layui-body">
+        <iframe name="myFrame" src="order/order_count.html" style="width: 100%; height: 99%;"></iframe>
+    </div>
+    <div class="layui-footer">© Riental Group C-Area</div>
+</div>
+
+<script src="/static/layui/layui.js" type="text/javascript" charset="utf-8"></script>
+<script src="/static/js/common/jquery.js" type="text/javascript" charset="utf-8"></script>
+<script src="/static/js/common/cookie.js?v=1"></script>
+<script>
+    layui.use(['element', 'jquery'], function () {
+        var element = layui.element;
+    });
+
+    var isShow = true;  //定义一个标志位
+    $('.kit-side-fold').click(function () {
+        //选择出所有的span，并判断是不是hidden
+        $('.layui-nav-item span').each(function () {
+            if ($(this).is(':hidden')) {
+                $(this).show();
+            } else {
+                $(this).hide();
+            }
+        });
+        //判断isshow的状态
+        if (isShow) {
+            $('.layui-side.layui-bg-black').width(60); //设置宽度
+            $('.layui-side i').css('margin-top', '10px');
+            $('.kit-side-fold i').css('margin-right', '70%');  //修改图标的位置
+
+
+            //将footer和body的宽度修改
+            $('.layui-body').css('left', 60 + 'px');
+            $('.layui-footer').css('left', 60 + 'px');
+            //将二级导航栏隐藏
+            $('dd span').each(function () {
+                $(this).hide();
+            });
+            //修改标志位
+            isShow = false;
+        } else {
+            $('.layui-side.layui-bg-black').width(200);
+            $('.kit-side-fold i').css('margin-right', '10%');
+            $('.layui-body').css('left', 200 + 'px');
+            $('.layui-footer').css('left', 200 + 'px');
+            $('dd span').each(function () {
+                $(this).show();
+            });
+            isShow = true;
+        }
+    });
+</script>
+<script src="/static/js/common/common.js?v=1" type="text/javascript" charset="utf-8"></script>
+<script src="/static/js/index.js" type="text/javascript" charset="utf-8"></script>
+</body>
+</html>

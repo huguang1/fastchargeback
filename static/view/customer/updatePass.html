@@ -1,0 +1,108 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta http-equiv="Content-Language" content="zh-cn">
+    <title>支付管理平台</title>
+    <link rel="stylesheet" href="/static/layui/css/layui.css" media="all">
+</head>
+<body>
+<div class="layui-fluid">
+    <div class="layui-row layui-col-space15">
+        <div class="layui-col-md12">
+            <div class="layui-card">
+                <div class="layui-card-header">修改密码</div>
+                <div class="layui-card-body" pad15="">
+                    <form class="layui-form" action="">
+                        <div class="layui-form-item">
+                            <label class="layui-form-label">当前密码</label>
+                            <div class="layui-input-inline">
+                                <input type="password" name="oldPassword" lay-verify="required" lay-vertype="tips"
+                                       class="layui-input">
+                            </div>
+                        </div>
+                        <div class="layui-form-item">
+                            <label class="layui-form-label">新密码</label>
+                            <div class="layui-input-inline">
+                                <input type="password" name="password" lay-verify="pass" lay-vertype="tips"
+                                       autocomplete="off" id="LAY_password" class="layui-input">
+                            </div>
+                            <div class="layui-form-mid layui-word-aux">6到12个字符</div>
+                        </div>
+                        <div class="layui-form-item">
+                            <label class="layui-form-label">确认新密码</label>
+                            <div class="layui-input-inline">
+                                <input type="password" name="repassword" lay-verify="repass" lay-vertype="tips"
+                                       autocomplete="off" class="layui-input">
+                            </div>
+                        </div>
+                        <div class="layui-form-item">
+                            <div class="layui-input-block">
+                                <button class="layui-btn" lay-submit="" lay-filter="setmypass">确认修改</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script src="/static/layui/layui.js" charset="utf-8"></script>
+<script src="/static/js/common/jquery.js"></script>
+<script src="/static/js/common/cookie.js"></script>
+<script>
+
+    $.ajaxSettings.beforeSend = function (xhr, request) {
+        xhr.setRequestHeader('X-CSRF-TOKEN', cookie.get("token"));
+    };
+
+    layui.config({
+        base: window.parent.baseUrl + '/layui/' //静态资源所在路径
+    }).use(['form', 'laydate'], function () {
+        var form = layui.form;
+
+        /* 自定义验证规则 */
+        form.verify({
+            oldPassword: [/(.+){6,12}$/, '密码必须6到12位'],
+            password: [/(.+){6,12}$/, '密码必须6到12位'],
+            repassword: [/(.+){6,12}$/, '密码必须6到12位'],
+        });
+        /* 监听提交 */
+        form.on('submit(setmypass)', function (data) {
+            var oldPassword = data.field.oldPassword,
+                password = data.field.password,
+                repassword = data.field.repassword;
+
+            if (data.field.password !== data.field.repassword) {
+                layer.alert('两次输入的密码不一致，请确认！');
+                return false;
+            }
+            if (oldPassword === password) {
+                layer.alert('新密码与旧密码相同！');
+                return false;
+            }
+            $.ajax({
+                url: "/config/sys/user/updatePass",
+                type: "post",
+                data: {
+                    oldPassword: oldPassword,
+                    password: password
+                },
+                success: function (response) {
+                    layer.msg(response);
+                    $("input[name='password']").val("");
+                    $("input[name='oldPassword']").val("");
+                    $("input[name='repassword']").val("");
+                },
+                error: function (e) {
+                    console.log(e);
+                }
+            });
+            //  阻止from刷新
+            return false;
+        });
+    });
+</script>
+</body>
+
+</html>

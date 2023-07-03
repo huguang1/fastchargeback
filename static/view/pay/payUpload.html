@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+
+    <style type="text/css">
+        body {
+        }
+
+        .float {
+            float: left;
+            width: 200px;
+            height: 200px;
+            overflow: hidden;
+            border: 1px solid #CCCCCC;
+            border-radius: 10px;
+            padding: 5px;
+            margin: 5px;
+        }
+
+        img {
+            position: relative;
+        }
+
+        .result {
+            width: 200px;
+            height: 200px;
+            text-align: center;
+            box-sizing: border-box;
+        }
+
+        #file_input {
+            display: none;
+        }
+
+        .delete {
+            width: 200px;
+            height: 200px;
+            position: absolute;
+            text-align: center;
+            line-height: 200px;
+            z-index: 10;
+            font-size: 30px;
+            background-color: rgba(255, 255, 255, 0.8);
+            color: #777;
+            opacity: 0;
+            transition-duration:: 0.7s;
+            -webkit-transition-duration: 0.7s;
+        }
+
+        .delete:hover {
+            cursor: pointer;
+            opacity: 1;
+        }
+
+        .layui-btn {
+            width:;
+            height:;
+        }
+
+
+    </style>
+
+    <meta charset="utf-8">
+    <title>上传付款二维码</title>
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1, maximum-scale=1">
+    <link rel="stylesheet" href="/static/layui/css/layui.css" media="all">
+</head>
+<body style="padding:0 20px 20px;">
+
+<fieldset class="layui-elem-field layui-field-title"
+          style="margin-top: 20px;">
+    <legend>上传付款二维码</legend>
+</fieldset>
+
+
+<!-- <div class="layui-form-item">
+    <div class="layui-input-block">
+        备注:<input id="comment" type="text"/>
+        <button id="add" class="layui-btn">上传(可连续)</button>
+        <input type="file" id="file_input" multiple/> 用input标签并选择type=file，记得带上multiple，不然就只能单选图片了
+        <button id="submit" style="display: none;" >提交</button>
+        <button class="layui-btn" lay-filter="mainSub" lay-submit="">立即提交</button>
+        <button id="select" class="layui-btn layui-btn-primary">清空所有</button>
+    </div>
+</div> -->
+<button type="button" class="layui-btn" id="test1" style="display:block; margin:0 auto;">
+    <i class="layui-icon">&#xe67c;</i>上传图片
+</button>
+<div style="margin-top:20px; text-align:center">
+    <img alt="" src="" id="pic"/>
+</div>
+<br/>
+<div style="margin-top: 10px; color:#000;font-size:14px; text-align:center;">
+    备注:<input type="text" id="comment" style="padding:8px 12px; margin-left:8px;"/>
+    <button type="button" class="layui-btn" id="test2">
+        提交
+    </button>
+</div>
+<script src="/static/layui/layui.js" charset="utf-8"></script>
+<script src="/static/js/pay/payUpload.js"></script>
+<script src="/static/js/common/jquery.js"></script>
+<script src="/static/js/common/cookie.js"></script>
+</body>
+</html>

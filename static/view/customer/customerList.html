@@ -1,0 +1,76 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="renderer" content="webkit">
+    <!-- CSRF -->
+    <meta name="_csrf" content="${_csrf.token}"/>
+    <!-- default header name is X-CSRF-TOKEN -->
+    <meta name="_csrf_header" content="${_csrf.headerName}"/>
+    <title>支付管理平台</title>
+    <link rel="stylesheet" href="/static/layui/css/layui.css" media="all">
+</head>
+<body>
+
+<fieldset class="layui-elem-field layui-field-title"
+          style="margin-top: 20px;">
+    <legend>会员列表</legend>
+</fieldset>
+
+<div style="margin:5px;">
+    <form class="layui-form" autocomplete="off">
+        <div class="layui-form-item" style="display: inline-flex;">
+            <div class="layui-inline">
+                <label class="layui-form-label">选择分层</label>
+                <div class="layui-input-block">
+                    <select name="customerGroupId" id="customerGroupId" lay-filter="pageType">
+                        <option value=""></option>
+                    </select>
+                </div>
+            </div>
+            <div class="layui-inline">
+                <label class="layui-form-label">会员名</label>
+                <div class="layui-input-block">
+                    <input type="text" name="orderTimeEnd" id="userAccount" class="layui-input">
+                </div>
+            </div>
+            <div class="layui-inline">
+                <button class="layui-btn" type="button" data-type="reload" id="selectbtn">搜索</button>
+            </div>
+            <div class="layui-inline">
+                <button class="layui-btn" type="button" id="reset">重置</button>
+            </div>
+            <div class="layui-inline">
+                <button class="layui-btn layui-btn-normal" type="button" id="add">添加会员</button>
+            </div>
+            <div class="layui-inline">
+                <button class="layui-btn layui-btn-normal edit" type="button" id="batchup">批量更新</button>
+            </div>
+            <div class="layui-inline">
+                <button class="layui-btn layui-btn-danger del" type="button" id="batchdel">批量删除</button>
+            </div>
+            <div class="layui-inline">
+                <button type="button" class="layui-btn" id="test3"><i class="layui-icon"></i>上传文件</button>
+            </div>
+            <div class="layui-inline">
+                <button type="button" class="layui-btn" id="downtemp"><i class="layui-icon"></i>下载模板</button>
+            </div>
+        </div>
+    </form>
+</div>
+<div class="role-table-reload-btn" style="margin-bottom: 10px;">
+    <!--数据表格-->
+    <table class="layui-hide" id="customerList" lay-filter="customerFilter"></table>
+    <!--数据行操作按钮-->
+    <script type="text/html" id="barDemo">
+        <a class="layui-btn layui-btn-xs edit" lay-event="edit">编辑</a>
+        <a class="layui-btn layui-btn-danger layui-btn-xs del" lay-event="del">删除</a>
+    </script>
+</div>
+<script src="/static/js/common/jquery.js"></script>
+<script src="/static/layui/layui.all.js"></script>
+<script src="/static/js/common/cookie.js"></script>
+<script src="/static/js/common/common.js" charset="utf-8"></script>
+<script src="/static/js/customer/customerList.js" type="text/javascript" charset="utf-8"></script>
+</body>
+</html>

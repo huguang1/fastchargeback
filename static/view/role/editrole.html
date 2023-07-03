@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>表单组合</title>
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=0">
+    <link rel="StyleSheet" href="/static/layui/css/dtree.css" type="text/css"/>
+    <script src="/static/layui/layui.js" type="text/javascript" charset="utf-8"></script>
+    <script src="/static/layui/lay/modules/jquery.js" type="text/javascript" charset="utf-8"></script>
+    <script type="text/javascript" src="/static/js/common/dtree.js"></script>
+    <script src="/static/js/role/editrole.js?v=1"></script>
+    <script src="/static/js/common/cookie.js"></script>
+    <script src="/static/js/common/common.js"></script>
+</head>
+
+<body>
+
+<div>
+    <div>
+        <div style="padding: 15px;">
+            <form id="myForm">
+                <input type="hidden" class="layui-input" name="roleId" id="roleId">
+                <div style="margin-bottom: 10px">
+                    <label style="color: #333;margin-right: 10px;">角色名称</label>
+                    <div style="display: inline-block;">
+                        <input type="text" name="roleName" id="roleName" lay-verify="required|userName"
+                               autocomplete="off" class="layui-input" style="line-height: 30px;height: 30px">
+                    </div>
+                </div>
+                <div style="margin-bottom: 10px">
+                    <label style="color: #333;margin-right: 10px;">角色描述</label>
+                    <div style="display: inline-block;">
+                        <input type="text" name="roleDesc" id="roleDesc" lay-verify="required" autocomplete="off"
+                               class="layui-input" style="line-height: 30px;height: 30px">
+                    </div>
+                </div>
+
+                <div>
+                    <label style="color: #333">角色权限</label>
+                    <div>
+                        <div class="dtree">
+                            <p><a href="javascript: d.openAll();" style="color: #009688 !important;">展开全部</a> | <a
+                                    href="javascript: d.closeAll();" style="color: #009688 !important;">收起</a></p>
+                            <script>
+                                d = new dTree('d', '/static', 'myForm');
+                                $.ajax({
+                                    type: 'get',
+                                    url: window.parent.parent.baseUrl + '/sys/permission/list',
+                                    async: false,
+                                    success: function (result) {
+                                        d.add(0, -1, '权限列表');
+                                        for (var i = 0; i < result.data.length; i++) {
+                                            d.add(result.data[i].id, result.data[i].parent_id, result.data[i].description);
+                                        }
+                                    }
+                                });
+                                document.write(d);
+                            </script>
+                        </div>
+                    </div>
+                </div>
+                <div>
+                    <div>
+                        <div style="text-align: center;margin-top: 25px">
+                            <div style="text-align:center;line-height: 40px;height: 40px;width:100px;color: #fff;background-color: #009688 !important;display: inline-block">
+                                <button id="btnEditRoleSubmit"
+                                        style="background-color: #009688;color: #fff;padding: 0 !important;border-width: 0;">
+                                    立即提交
+                                </button>
+                            </div>
+                            <div style="margin-left:30px;text-align:center;line-height: 40px;height: 40px;width:100px;color: #fff;background-color: #009688 !important;display: inline-block">
+                                <button id="btnCancel"
+                                        style="background-color: #009688;color: #fff;padding: 0 !important;border-width: 0;">
+                                    取消
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+</body>
+</html>

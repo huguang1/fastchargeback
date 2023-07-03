@@ -1,0 +1,72 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+    <META HTTP-EQUIV="Cache-Control" CONTENT="no-cache">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta http-equiv="Content-Language" content="zh-cn">
+    <title>支付管理平台</title>
+    <link rel="stylesheet" href="/static/layui/css/layui.css" media="all">
+
+    <style type="text/css">
+        .modularity {
+            font-size: 30px;
+            font-weight: bold;
+        }
+
+        #chartDay, #chartWeek {
+            display: inline-block;
+        }
+    </style>
+</head>
+<body class="childrenBody">
+
+<fieldset class="layui-elem-field layui-field-title"
+          style="margin-top: 20px;">
+    <legend>统计信息</legend>
+</fieldset>
+
+<div style="padding: 20px; background-color: #F2F2F2;">
+    <div class="layui-row layui-col-space15">
+        <div class="layui-col-md6">
+            <div class="layui-card modularity">
+                <div class="layui-card-header" style="background-color: #4db6ac;color: #fff;">今日订单</div>
+                <div class="layui-card-body">
+                    <span id="todayOrder">0</span>
+                </div>
+            </div>
+        </div>
+        <div class="layui-col-md6">
+            <div class="layui-card modularity">
+                <div class="layui-card-header" style="background-color: #00897b;color: #fff;">今日订单总金额</div>
+                <div class="layui-card-body">
+                    ￥<span id="todayAmount">0</span>
+                </div>
+            </div>
+        </div>
+        <div class="layui-col-md6">
+            <div class="layui-card modularity">
+                <div class="layui-card-header" style="background-color: #26a69a;color: #fff;">总订单</div>
+                <div class="layui-card-body">
+                    <span id="countOrder">0</span>
+                </div>
+            </div>
+        </div>
+        <div class="layui-col-md6">
+            <div class="layui-card modularity">
+                <div class="layui-card-header" style="background-color: #00897b;color: #fff;">总订单金额</div>
+                <div class="layui-card-body">
+                    ￥<span id="countAmount">0</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div id="chartDay" style="width: 800px;height:400px;"></div>
+<div id="chartWeek" style="width: 800px;height:400px;"></div>
+<script src="/static/layui/layui.js" charset="utf-8"></script>
+<script src="/static/js/common/jquery.js"></script>
+<script src="/static/js/common/common.js"></script>
+<script src="/static/js/common/echarts.common.min.js"></script>
+<script src="/static/js/order/order_count.js" charset="utf-8"></script>
+</body>
+</html>
